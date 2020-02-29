@@ -1,0 +1,247 @@
+BACKUP ~CtBLiberate/backup~
+AUTHOR ~Roxanne@baldursextendedworld.com based on a quest from Charles Bisson's CtB~
+
+AUTO_TRA ~CtBLiberate/TRA/~
+
+VERSION ~v0.1~
+
+ALWAYS
+ACTION_IF GAME_IS ~eet~ BEGIN
+		OUTER_SET wmp_xCoord_SoA = 0
+		OUTER_SET wmp_yCoord_SoA = 2283
+	END ELSE BEGIN
+		OUTER_SET wmp_xCoord_SoA = 0
+		OUTER_SET wmp_yCoord_SoA = 0
+	END
+END
+
+LANGUAGE ~English~ ~english~ ~CtBLiberate/TRA/setup.tra~
+
+BEGIN ~Liberation of Hlondeth~
+
+APPEND ~MASTAREA.2DA~
+~AR3610  value
+AR3611  value
+AR3613  value
+AR3675  value~
+
+COPY  ~CtBLiberate/ARE~ ~override~
+COPY  ~CtBLiberate/CRE~ ~override~
+COPY  ~CtBLiberate/wav~ ~override~
+COPY  ~CtBLiberate/tis~ ~override~
+
+COPY ~CtBLiberate/Extend/AR3610.ARE~ ~override~
+  SAY 0x1a80 @205
+  SAY 0x1b44 @206
+  SAY 0x1c08 @207
+  SAY 0x1ccc @208
+  SAY 0x66d8 @236
+  SAY 0x670c @237
+  SAY 0x6740 @238
+
+COPY ~CtBLiberate/Extend/AR3611.ARE~ ~override~
+  SAY 0x5040 @238
+  SAY 0x5074 @239
+  SAY 0x3800 @70000
+
+COPY ~CtBLiberate/Extend/AR3613.ARE~ ~override~
+  SAY 0x3f44 @238
+  SAY 0x3f78 @240
+
+COPY ~CtBLiberate/Extend/AR3635.ARE~ ~override~
+  SAY 0x574 @212
+  
+COPY ~CtBLiberate/Extend/AR3636.ARE~ ~override~
+  SAY 0x354 @213
+  
+COPY ~CtBLiberate/Extend/AR3625.ARE~ ~override~
+  SAY 0x464 @209
+
+COPY ~CtBLiberate/Extend/AR3626.ARE~ ~override~
+  SAY 0x464 @209
+  
+COPY ~CtBLiberate/Extend/AR3631.ARE~ ~override~
+  SAY 0x638 @211
+
+COPY ~CtBLiberate/Extend/AR3635.ARE~ ~override~
+  SAY 0x574 @212
+
+COPY ~CtBLiberate/Extend/AR3636.ARE~ ~override~
+  SAY 0x354 @213
+
+COPY ~CtBLiberate/Extend/AR3637.ARE~ ~override~
+ SAY 0x1034 @767213
+
+COPY ~CtBLiberate/Extend/AR3638.ARE~ ~override~
+  SAY 0xbd4 @214
+  
+COPY ~CtBLiberate/Extend/AR3641.ARE~ ~override~
+  SAY 0x794 @215
+
+COPY ~CtBLiberate/Extend/AR3643.ARE~ ~override~
+  SAY 0xb10 @70001
+
+COPY ~CtBLiberate/Extend/AR3647.ARE~ ~override~
+  SAY 0x354 @216
+
+COPY ~CtBLiberate/Extend/AR3649.ARE~ ~override~
+  SAY 0x464 @209
+  
+COPY ~CtBLiberate/Extend/CB3668.ARE~ ~override~
+  SAY 0x0ccc @661003
+  SAY 0x0cd0 @661003
+  SAY 0x0cd4 @661003
+  SAY 0x0cd8 @661003
+  SAY 0x0cdc @661003
+  SAY 0x0ce0 @661003
+  SAY 0x0ce4 @661003
+  SAY 0x0ce8 @661003
+  SAY 0x0cec @661003
+  SAY 0x0cf0 @661003
+
+
+INCLUDE ~%MOD_FOLDER%/worldmap/add_worldmap_tbl.tpa~
+	LAF ADD_WORLDMAP_TBL
+		INT_VAR
+		inclSv = 0
+		add_x = wmp_xCoord_SoA
+		add_y = 0
+		STR_VAR
+		path_to_areas = EVAL ~%MOD_FOLDER%/Worldmap/3610areas.tbl~
+		path_to_areas_bp = EVAL ~%MOD_FOLDER%/Worldmap/3610areas.tbl~
+		path_to_links = EVAL ~%MOD_FOLDER%/Worldmap/3610.tbl~
+		path_to_trans = EVAL ~%MOD_FOLDER%/Worldmap/3610.tra~
+	END
+
+
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_areas.tbl~ THEN BEGIN
+    COPY ~Worldmap/map_mods_areas.tbl~  ~Worldmap~
+     APPEND_FILE ~CtBLiberate/Worldmap/3610areas.tbl~
+END
+  ELSE BEGIN
+    MKDIR ~Worldmap~
+    COPY ~CtBLiberate/Worldmap/3610areas.tbl~ ~Worldmap/map_mods_areas.tbl~
+END
+
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_links.tbl~ THEN BEGIN
+    COPY ~Worldmap/map_mods_links.tbl~  ~Worldmap~
+    APPEND_FILE ~CtBLiberate/Worldmap/3610.tbl~
+  END
+  ELSE BEGIN
+    MKDIR ~Worldmap~
+    COPY ~CtBLiberate/Worldmap/3610.tbl~ ~Worldmap/map_mods_links.tbl~
+END
+
+ACTION_IF FILE_EXISTS ~Worldmap/map_mods_trans.tra~ THEN BEGIN
+     COPY ~Worldmap/map_mods_trans.tra~  ~Worldmap~
+     APPEND_FILE_EVALUATE ~CtBLiberate/Worldmap/3610.tra~
+   END
+  ELSE BEGIN
+    MKDIR ~Worldmap~
+    COPY ~CtBLiberate/Worldmap/3610.tra~ ~Worldmap/map_mods_trans.tra~
+END
+
+COMPILE ~CtBLiberate/baf~
+EXTEND_TOP ~ar0020.bcs~ ~CtBLiberate/Extend/ar0020.baf~
+
+LOAD_TRA ~CtBLiberate/TRA/setup.tra~
+COMPILE ~CtBLiberate/d~
+
+COPY   ~CtBLiberate/Extend/RYNNPC11.CRE~ ~override~
+  SAY NAME1             @100
+  SAY NAME2             @100
+  SAY INITIAL_MEETING   @101
+
+COPY ~CtBLiberate/Extend/CBGONAST.CRE~ ~override~ SAY NAME1 @37    SAY NAME2 @37
+COPY ~CtBLiberate/Extend/CBZOMBD1.CRE~ ~override~ SAY NAME1 @95    SAY NAME2 @95
+COPY ~CtBLiberate/Extend/CBZOMBD2.CRE~ ~override~ SAY NAME1 @96    SAY NAME2 @96
+COPY ~CtBLiberate/Extend/CBZOMB01.CRE~ ~override~ SAY NAME1 @95    SAY NAME2 @95
+COPY ~CtBLiberate/Extend/CBZOMB02.CRE~ ~override~ SAY NAME1 @96    SAY NAME2 @96
+COPY ~CtBLiberate/Extend/CBZOMB03.CRE~ ~override~ SAY NAME1 @97    SAY NAME2 @97
+COPY ~CtBLiberate/Extend/CBZOMB05.CRE~ ~override~ SAY NAME1 @97    SAY NAME2 @97
+COPY ~CtBLiberate/Extend/CBZOMB07.CRE~ ~override~ SAY NAME1 @97    SAY NAME2 @97
+COPY ~CtBLiberate/Extend/CBZOMB04.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB06.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB08.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB09.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB10.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB11.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB12.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB13.CRE~ ~override~ SAY NAME1 @98    SAY NAME2 @98
+COPY ~CtBLiberate/Extend/CBZOMB0A.CRE~ ~override~ SAY NAME1 @99    SAY NAME2 @99
+COPY ~CtBLiberate/Extend/CBZOMB0B.CRE~ ~override~ SAY NAME1 @99    SAY NAME2 @99
+COPY ~CtBLiberate/Extend/CBZOMB0C.CRE~ ~override~ SAY NAME1 @99    SAY NAME2 @99
+COPY ~CtBLiberate/Extend/CBHLVLNT.CRE~ ~override~ SAY NAME1 @45    SAY NAME2 @45
+COPY ~CtBLiberate/Extend/CB363501.CRE~ ~override~ SAY NAME1 @3     SAY NAME2 @3
+COPY ~CtBLiberate/Extend/CB3647HB.CRE~ ~override~ SAY NAME1 @4     SAY NAME2 @4
+COPY ~CtBLiberate/Extend/CB3650DW.CRE~ ~override~ SAY NAME1 @5     SAY NAME2 @5
+COPY ~CtBLiberate/Extend/CBMYSTP1.CRE~ ~override~ SAY NAME1 @56    SAY NAME2 @56
+COPY ~CtBLiberate/Extend/CBMYSTP2.CRE~ ~override~ SAY NAME1 @555556 SAY NAME2 @555556
+COPY ~CtBLiberate/Extend/CBMYSTP3.CRE~ ~override~ SAY NAME1 @56    SAY NAME2 @56
+COPY ~CtBLiberate/Extend/CBMYSTP4.CRE~ ~override~ SAY NAME1 @56    SAY NAME2 @56
+COPY ~CtBLiberate/Extend/CBHLDYT1.CRE~ ~override~ SAY NAME1 @38    SAY NAME2 @38
+COPY ~CtBLiberate/Extend/CBHLDYT2.CRE~ ~override~ SAY NAME1 @42    SAY NAME2 @42
+COPY ~CtBLiberate/Extend/CBHLDYT3.CRE~ ~override~ SAY NAME1 @43    SAY NAME2 @43
+COPY ~CtBLiberate/Extend/CBHLDYT4.CRE~ ~override~ SAY NAME1 @44    SAY NAME2 @44
+COPY ~CtBLiberate/Extend/CBGRDYUN.CRE~ ~override~ SAY NAME1 @38    SAY NAME2 @38
+COPY ~CtBLiberate/Extend/CB642BAR.CRE~ ~override~ SAY NAME1 @15    SAY NAME2 @15
+COPY ~CtBLiberate/Extend/CBYT4446.CRE~ ~override~ SAY NAME1 @38    SAY NAME2 @38
+COPY ~CtBLiberate/Extend/CBYT4447.CRE~ ~override~ SAY NAME1 @38    SAY NAME2 @38
+COPY ~CtBLiberate/Extend/CB368DRG.CRE~ ~override~ SAY NAME1 @661004 SAY NAME2 @661004
+COPY ~CtBLiberate/Extend/CBUNDEAD.CRE~ ~override~ SAY NAME1 @661005 SAY NAME2 @661005
+
+COPY ~CtBLiberate/Extend/CBGONAST.ITM~ ~override~
+  SAY NAME1 @650305
+  SAY NAME2 @650305
+  SAY UNIDENTIFIED_DESC @650306
+  SAY DESC @650306
+  
+COPY ~CtBLiberate/Extend/CBRYNN.ITM~ ~override~
+  SAY NAME1 @650498
+  SAY NAME2 @650498
+  SAY UNIDENTIFIED_DESC @650499
+  SAY DESC @650499
+COPY ~CtBLiberate/Extend/CBVALTSS.ITM~ ~override~
+  SAY NAME2 @650567
+  SAY DESC @650568
+COPY ~CtBLiberate/Extend/CBRYCHST.ITM~ ~override~
+  SAY NAME1 @650496
+  SAY NAME2 @650496
+  SAY UNIDENTIFIED_DESC @650497
+COPY ~CtBLiberate/Extend/CBMYSTWT.ITM~ ~override~
+  SAY NAME1 @650442
+  SAY NAME2 @650442
+  SAY UNIDENTIFIED_DESC @650443
+  SAY DESC @650443
+COPY ~CtBLiberate/Extend/CBMYSTTP.ITM~ ~override~
+  SAY NAME1 @650440
+  SAY NAME2 @650440
+  SAY UNIDENTIFIED_DESC @650441
+  SAY DESC @650441
+COPY ~CtBLiberate/Extend/CBMYSTRA.ITM~ ~override~
+  SAY NAME2 @661019
+  SAY DESC @661020
+COPY ~CtBLiberate/Extend/CBHLYTAX.ITM~ ~override~
+  SAY NAME1 @650341
+  SAY NAME2 @650344
+  SAY DESC @650345
+COPY ~CtBLiberate/Extend/CBHLGATE.ITM~ ~override~
+  SAY NAME1 @650337
+  SAY NAME2 @650338
+  SAY UNIDENTIFIED_DESC @650339
+  SAY DESC @650340
+  
+COPY ~CtBLiberate/Extend/CBHLVLNT.STO~ ~override~ SAY STORE_NAME @205
+COPY ~CtBLiberate/Extend/CB363501.STO~ ~override~ SAY STORE_NAME @134
+ SAY 0xa4 @143
+ SAY 0xb8 @144
+ SAY 0xcc @145
+COPY ~CtBLiberate/Extend/CBMYSTP1.STO~ ~override~ SAY STORE_NAME @139
+COPY ~CtBLiberate/Extend/CB3647HB.STO~ ~override~ SAY STORE_NAME @4
+COPY ~CtBLiberate/Extend/CB3651IN.STO~ ~override~ SAY STORE_NAME @136
+COPY ~CtBLiberate/Extend/CB3651IO.STO~ ~override~ SAY STORE_NAME @136
+
+COPY ~CtBLiberate/Extend/CBHEXSCR.2DA~ ~override~
+ REPLACE ~99999999~ @650699
+  
+ADD_JOURNAL @907 @908 @909 @9010 @9011 @9012 @9063 @9064 @9065 USING ~CtBLiberate/TRA/setup.tra~

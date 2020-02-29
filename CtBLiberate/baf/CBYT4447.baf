@@ -1,0 +1,84 @@
+IF
+	AreaCheck("AR3646")
+	Global("CbSuperBoss","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CbSuperBoss","LOCALS",1)
+                ApplySpellRES("CBYT4446",Myself)
+END
+
+IF
+	Global("CbYuanTiGotEquip2","Global",0)
+THEN
+RESPONSE #100
+		SetGlobal("CbYuanTiGotEquip2","Global",1)
+		GiveItemCreate("BELT08",Myself,1,0,0)
+		EquipItem("BELT08")
+		GiveItemCreate("HELM20",Myself,1,0,0)
+		EquipItem("HELM20")
+		GiveItemCreate("RING07",Myself,1,0,0)
+		EquipItem("RING07")
+		GiveItemCreate("RNDTRE06",Myself,1,0,0)
+		GiveItemCreate("SW2H20",Myself,1,0,0)
+		EquipItem("SW2H20") 
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("CbCastOnce","LOCALS",0)
+THEN
+	RESPONSE #80
+		SetGlobal("CbCastOnce","LOCALS",1)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_MELF_ACID_ARROW)
+	RESPONSE #80
+		SetGlobal("CbCastOnce","LOCALS",1)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_AGANNAZAR_SCORCHER)
+	RESPONSE #100
+		SetGlobal("CbCastOnce","LOCALS",1)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)
+	RESPONSE #100
+		SetGlobal("CbCastOnce","LOCALS",1)
+		SpellNoDec(NearestEnemyOf(Myself),WIZARD_FLAME_ARROW)
+END
+
+IF
+	Allegiance(Myself,ENEMY)
+	Global("EquipWeapon","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("EquipWeapon","LOCALS",1)
+		EquipMostDamagingMelee()
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Global("CastWhirlwind","LOCALS",0)
+	!GlobalTimerNotExpired("WhirlwindTimer","LOCALS")
+THEN
+	RESPONSE #10
+		ForceSpell(Myself,WARRIOR_WHIRLWIND)
+		SetGlobal("CastWhirlwind","LOCALS",1)
+	RESPONSE #90
+		SetGlobal("CastWhirlwind","LOCALS",1)
+		
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		SetGlobal("CastWhirlwind","LOCALS",0)
+		SetGlobalTimer("WhirlwindTimer","LOCALS",30)
+		EquipMostDamagingMelee()
+		AttackReevaluate(NearestEnemyOf(Myself),120)
+END
+
+IF
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(LastSeenBy(Myself),45)
+END
+
+

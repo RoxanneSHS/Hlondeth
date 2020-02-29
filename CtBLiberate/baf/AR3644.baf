@@ -1,0 +1,36 @@
+IF
+Global("CbIntroHouseExtaminos","AR3644",0)
+THEN
+RESPONSE #100
+SetGlobal("CbIntroHouseExtaminos","AR3644",1)
+TextScreen("CBHEXSCR")
+END
+
+IF
+Global("CbIntroHouseExtaminos","AR3644",1)
+THEN
+RESPONSE #100
+SetGlobal("CbIntroHouseExtaminos","AR3644",2)
+TriggerActivation("TNCB3661",FALSE)
+END
+
+IF
+Global("CbIntroHouseExtaminos","AR3644",2)
+Global("CbRynnsQuest","GLOBAL",8)
+THEN
+RESPONSE #100
+SetGlobal("CbIntroHouseExtaminos","AR3644",3)
+TriggerActivation("TNCB3661",TRUE)
+END
+
+IF
+Delay(6)
+Global("CB_RynnWithPC","GLOBAL",1)
+!InActiveArea("RYNNPC11")
+!Dead("RYNNPC11")
+THEN
+RESPONSE #100
+MoveGlobalObject("RYNNPC11",Protagonist)
+ActionOverride("RYNNPC11",RunAwayFrom(Player1,5))
+END
+

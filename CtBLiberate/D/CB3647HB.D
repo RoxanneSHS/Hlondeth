@@ -1,0 +1,19 @@
+BEGIN ~CB3647HB~
+
+IF ~True()~ THEN BEGIN 0
+  SAY @1
+  IF ~~ THEN REPLY @2 GOTO 2
+  IF ~~ THEN REPLY @4 GOTO 1
+END
+
+IF ~~ THEN BEGIN 1
+  SAY @6
+  IF ~~ THEN DO ~StartStore("CB3647HB",LastTalkedToBy(Myself))
+~ EXIT
+END
+
+IF ~~ THEN BEGIN 2
+  SAY @7
+  IF ~~ THEN EXIT
+END
+

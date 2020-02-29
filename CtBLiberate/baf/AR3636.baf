@@ -1,0 +1,36 @@
+IF
+Global("CbRynnSpawned","AR3636",0)
+THEN
+RESPONSE #100
+SetGlobal("CbRynnSpawned","AR3636",1)
+CreateCreature("RYNNPC11",[397.511],14)
+END
+
+IF
+Global("CB_RynnWithPC","GLOBAL",1)
+Global("CbFixRynnHere","AR3636",0)
+THEN
+RESPONSE #100
+SetGlobal("CbFixRynnHere","AR3636",1)
+ActionOverride("RYNNPC11",ChangeAIScript("RYNNNPC",CLASS))
+ActionOverride("RYNNPC11",ChangeAIScript("",OVERRIDE))
+ActionOverride("RYNNPC11",ChangeAIScript("",DEFAULT))
+ActionOverride("RYNNPC11",ChangeAIScript("",GENERAL))
+ActionOverride("RYNNPC11",ChangeAIScript("",RACE))
+ActionOverride("RYNNPC11",SetDialog("RYNN"))
+END
+
+IF
+OR(4)
+!Contains("ax1h07","Closet")
+!Contains("hamm03","Closet")
+!Contains("sw1h26","Closet")
+!Contains("sw1h76","Closet")
+Global("CbStoleFromValiant","AR3636",0)
+THEN
+RESPONSE #100
+SetGlobal("CbStoleFromValiant","AR3636",1)
+ActionOverride("CBHLVLNT",StartDialogueNoSet(Nearest([GOODCUTOFF])))
+END
+
+

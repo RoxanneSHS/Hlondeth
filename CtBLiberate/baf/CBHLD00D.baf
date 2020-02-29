@@ -1,0 +1,88 @@
+IF
+	Global("CbHlondethVillagerName","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("CbHlondethVillagerName","LOCALS",1)
+END
+
+IF
+	Global("CbHlondethVillagerName","LOCALS",1)
+	Global("CbHlondethVillagerItem","LOCALS",0)
+THEN
+	RESPONSE #10
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE06",Myself,1,0,0)
+	RESPONSE #10
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE07",Myself,1,0,0)
+		GiveItemCreate("RNDTRE08",Myself,1,0,0)
+	RESPONSE #10
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE09",Myself,1,0,0)
+		GiveItemCreate("RNDTRE10",Myself,1,0,0)
+		GiveItemCreate("RNDTRE11",Myself,1,0,0)
+	RESPONSE #10
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE12",Myself,1,0,0)
+		GiveItemCreate("RNDTRE13",Myself,1,0,0)
+		GiveItemCreate("RNDTRE14",Myself,1,0,0)
+		GiveItemCreate("RNDTRE06",Myself,1,0,0)
+	RESPONSE #10
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE07",Myself,1,0,0)
+		GiveItemCreate("RNDTRE08",Myself,1,0,0)
+		GiveItemCreate("RNDTRE09",Myself,1,0,0)
+		GiveItemCreate("RNDTRE10",Myself,1,0,0)
+		GiveItemCreate("RNDTRE11",Myself,1,0,0)
+	RESPONSE #50
+		SetGlobal("CbHlondethVillagerItem","LOCALS",1)
+END
+
+IF
+	Global("CbHlondethVillagerName","LOCALS",1)
+	Global("CbHlondethVillagerItem","LOCALS",1)
+THEN
+	RESPONSE #17
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE12",Myself,2,0,0)
+                ApplySpellRES("CBHLDGSS",Myself)
+	RESPONSE #17
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE13",Myself,2,0,0)
+		GiveItemCreate("RNDTRE14",Myself,1,0,0)
+                ApplySpellRES("CBHLDGSS",Myself)
+	RESPONSE #17
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE06",Myself,2,0,0)
+		GiveItemCreate("RNDTRE07",Myself,2,0,0)
+		GiveItemCreate("RNDTRE08",Myself,1,0,0)
+                ApplySpellRES("CBHLDGSS",Myself)
+	RESPONSE #17
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE09",Myself,2,0,0)
+		GiveItemCreate("RNDTRE10",Myself,2,0,0)
+		GiveItemCreate("RNDTRE11",Myself,2,0,0)
+		GiveItemCreate("RNDTRE12",Myself,1,0,0)
+                ApplySpellRES("CBHLDGSS",Myself)
+	RESPONSE #17
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+		GiveItemCreate("RNDTRE13",Myself,2,0,0)
+		GiveItemCreate("RNDTRE14",Myself,2,0,0)
+		GiveItemCreate("RNDTRE06",Myself,2,0,0)
+		GiveItemCreate("RNDTRE07",Myself,2,0,0)
+		GiveItemCreate("RNDTRE08",Myself,1,0,0)
+                ApplySpellRES("CBHLDGSS",Myself)
+END
+
+IF
+	Global("CbHlondethVillagerName","LOCALS",1)
+	Global("CbHlondethVillagerItem","LOCALS",2)
+THEN
+	RESPONSE #100
+		SetGlobal("CbHlondethVillagerItem","LOCALS",3)
+                ApplySpellRES("CBHLDGSS",Myself)
+END
+
+
+
+

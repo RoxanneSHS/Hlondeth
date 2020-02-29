@@ -1,0 +1,55 @@
+IF
+Global("CbTriggerActivated","AR3641",0)
+Global("CbTriggerSwitch","AR3641",0)
+THEN
+RESPONSE #100
+SetGlobal("CbTriggerSwitch","AR3641",1)
+TriggerActivation("High_Level_2",FALSE)
+Continue()
+END
+
+IF
+Global("CbTriggerSwitch","AR3641",1)
+Global("CbTriggerActivated","AR3641",1)
+THEN
+RESPONSE #100
+SetGlobal("CbTriggerTwoActivated","AR3641",0)
+SetGlobal("CbTriggerSwitch","AR3641",2)
+TriggerActivation("High_Level_2",TRUE)
+Continue()
+END
+
+IF
+Global("CbRynnsQuest","GLOBAL",3)
+Global("CbAstinarSpawnOne","GLOBAL",0)
+Delay(15)
+THEN
+RESPONSE #70
+SetGlobal("CbAstinarSpawnOne","GLOBAL",1)
+CreateCreatureOffScreen("CBGONAST",0)
+END
+
+IF
+Global("CbRynnsQuest","GLOBAL",5)
+Global("CbAstinarSpawnTwo","GLOBAL",0)
+Delay(15)
+THEN
+RESPONSE #80
+SetGlobal("CbAstinarSpawnTwo","GLOBAL",1)
+CreateCreatureOffScreen("CBGONAST",0)
+END
+
+IF
+Delay(6)
+Global("CB_RynnWithPC","GLOBAL",1)
+!InActiveArea("RYNNPC11")
+!Dead("RYNNPC11")
+THEN
+RESPONSE #100
+MoveGlobalObject("RYNNPC11",Protagonist) 
+ActionOverride("RYNNPC11",RunAwayFrom(Player1,5))
+END
+
+
+
+

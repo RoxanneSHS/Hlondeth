@@ -1,0 +1,23 @@
+
+AR0020    E         AR3610      ExitN       48        1          AR0042   AR0044   N        N        N        90
+AR1100    W         AR3610      ExitN       43        1          AR0042   AR0044   N        N        N        20
+AR1200    E         AR3610      ExitN       42        1          AR0042   AR0044   N        N        N        10
+AR2000    E         AR3610      ExitN       45        4          AR0042   AR0044   N        N        N        10
+AR3610    N         AR0020      ExitNE      48        1          AR0042   AR0044   N        N        N        70
+AR3610    N         AR1100      ExitSE      43        1          AR0042   AR0044   N        N        N        70
+AR3610    N         AR1200      EXITW       42        1          AR0042   AR0044   N        N        N        50
+AR3610    N         AR2000      ExitNW      45        1          AR0042   AR0044   N        N        N        50
+AR3610    W         AR3611      Ext3610A    0         1          N        N        N        N        N        0
+AR3610    W         AR3613      Exit3610    0         1          N        N        N        N        N        0
+AR3610    S         AR3611      Ext3610B    0         1          N        N        N        N        N        0
+AR3610    S         AR3613      Exit3610    0         1          N        N        N        N        N        0
+AR3611    N         AR3610      Ext3611B    0         1          N        N        N        N        N        0
+AR3611    N         AR3613      Exit3611    0         1          N        N        N        N        N        0
+AR3611    W         AR3610      Ext3611A    0         1          N        N        N        N        N        0
+AR3611    W         AR3613      Exit3611    0         1          N        N        N        N        N        0
+AR3611    S         AR3610      Ext3611B    0         1          N        N        N        N        N        0
+AR3611    S         AR3613      Exit3611    0         1          N        N        N        N        N        0
+AR3613    E         AR3610      Exit3613    0         1          N        N        N        N        N        0
+AR3613    E         AR3611      Exit3613    0         1          N        N        N        N        N        0
+AR3613    S         AR3610      Exit3613    0         1          N        N        N        N        N        0
+AR3613    S         AR3611      Exit3613    0         1          N        N        N        N        N        0

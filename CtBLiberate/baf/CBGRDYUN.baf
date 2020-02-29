@@ -1,0 +1,35 @@
+IF
+	See("RYNNPC11")
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,ENEMY)
+		Attack(LastSeenBy(Myself))
+END
+
+IF
+	Global("CbRynnsQuest","GLOBAL",7)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,ENEMY)
+END
+
+IF
+	GlobalGT("CbRynnsQuest","GLOBAL",5)
+	See([GOODCUTOFF])
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,ENEMY)
+END
+
+IF
+	OpenState("DOOR04",TRUE)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ChangeEnemyAlly(Myself,ENEMY)
+END
+
+

@@ -1,0 +1,30 @@
+IF
+Global("CbRynnsQuest","GLOBAL",3)
+Global("CbAstinarSpawnOne","GLOBAL",0)
+THEN
+RESPONSE #60
+SetGlobal("CbAstinarSpawnOne","GLOBAL",1)
+CreateCreatureOffScreen("CBGONAST",0)
+END
+
+IF
+Global("CbRynnsQuest","GLOBAL",5)
+Global("CbAstinarSpawnTwo","GLOBAL",0)
+THEN
+RESPONSE #60
+SetGlobal("CbAstinarSpawnTwo","GLOBAL",1)
+CreateCreatureOffScreen("CBGONAST",0)
+END
+
+IF
+Delay(6)
+Global("CB_RynnWithPC","GLOBAL",1)
+!InActiveArea("RYNNPC11")
+!Dead("RYNNPC11")
+THEN
+RESPONSE #100
+MoveGlobalObject("RYNNPC11",Protagonist) 
+ActionOverride("RYNNPC11",RunAwayFrom(Player1,5))
+END
+
+

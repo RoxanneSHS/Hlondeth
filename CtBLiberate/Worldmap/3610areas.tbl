@@ -1,0 +1,8 @@
+//Snowflake New Area Table
+SHORT_NAME  CONTENT  LONG_NAME  FLAGS  BAM_ANIM  X_POS  Y_POS  NAME         TOOLTIP      LOAD_IM
+
+AR3611      AR3611   AR3611     5      184     215    3380   @CTB_778012  @CTB_778012  N        //East Hlondeth
+AR3610      AR3610   AR3610     5      185     135    3320   @CTB_778002  @CTB_778002  N        //Central Hlondeth
+AR3613      AR3613   AR3613     5      186      55    3380   @CTB_778013  @CTB_778013  N        //West Hlondeth
+AR3675      AR3675   AR3675     4      92     1500    2625   @CTB_778011  @CTB_778011  N        //Brimstone Bridge
+

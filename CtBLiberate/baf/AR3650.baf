@@ -1,0 +1,11 @@
+IF
+!InMyArea("CB3650DW")
+THEN
+RESPONSE #100
+CreateCreature("CB3650DW",[245.305],0)
+Continue()
+END
+
+
+
+

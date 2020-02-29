@@ -1,0 +1,12 @@
+IF
+Global("CBShowHlondeth","AR0020",0)
+LevelGT(Player1,10)
+THEN
+RESPONSE #100
+SetGlobal("CBShowHlondeth","AR0020",1)
+RevealAreaOnMap("AR3610")
+RevealAreaOnMap("AR3611")
+RevealAreaOnMap("AR3613")
+Continue()
+END
+
