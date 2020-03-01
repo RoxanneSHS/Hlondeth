@@ -1,6 +1,6 @@
 IF
 	Die()
-	!InPartyAllowDead(Myself)
+	Global("CB_RynnWithPC","GLOBAL",0)
 	!StateCheck(Myself,STATE_STONE_DEATH)
 	OR(2)
 		Allegiance(Myself,ENEMY)
@@ -11,6 +11,16 @@ THEN
 		CreateItem("cbrynn",0,0,0)
 		SetGlobal("t#RYNNbody","LOCALS",1)
 		DropInventory()
+END
+
+IF
+Global("CB_RynnWithPC","GLOBAL",0)
+Global("CB_RynnSleep","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("CB_RynnSleep","LOCALS",1)
+GiveItemCreate("minhp1",Myself,1,0,0)
+FillSlot(SLOT_AMULET)
 END
 
 IF
@@ -55,6 +65,16 @@ Delay(6)
 THEN
 RESPONSE #100
 MoveToObjectFollow(Protagonist)
+END
+
+IF
+HPLT(Myself,11)
+Global("CB_RynnWithPC","GLOBAL",1)
+THEN
+RESPONSE #100
+ReallyForceSpellRES("BGSleep",Myself) 
+Wait(3)
+ReallyForceSpell(Myself,HEAL_NO_VISUAL) 
 END
 
 IF
