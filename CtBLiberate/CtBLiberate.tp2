@@ -1,9 +1,9 @@
 BACKUP ~CtBLiberate/backup~
 AUTHOR ~Roxanne@baldursextendedworld.com based on a quest from Charles Bisson's CtB~
 
-AUTO_TRA ~CtBLiberate/TRA/~
+AUTO_TRA ~CtBLiberate/%s~
 
-VERSION ~v0.1~
+VERSION ~v0.2~
 
 ALWAYS
 ACTION_IF GAME_IS ~eet~ BEGIN
@@ -15,7 +15,12 @@ ACTION_IF GAME_IS ~eet~ BEGIN
 	END
 END
 
-LANGUAGE ~English~ ~english~ ~CtBLiberate/TRA/setup.tra~
+LANGUAGE ~English~
+	 ~English~
+         ~CtBLiberate/English/setup.tra~
+LANGUAGE ~Russian (translation aerie-ru.info team added by Serdrick)~
+	 ~russian~
+	 ~CtBLiberate/russian/setup.tra~
 
 BEGIN ~Liberation of Hlondeth~
 
